@@ -9,4 +9,7 @@ router.route('/')
 router.route('/category/:id')
     .get(productControllers.productsPerCategory)
 
+router.route('/search-products')
+    .get(productControllers.searchProducts)
+
 module.exports = router

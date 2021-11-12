@@ -1,7 +1,9 @@
 <%- include('./partials/header.ejs') %>
     <div class="container-fluid">
-        <input type="text" name="search" id="search" placeholder="Buscar productos...">
-        <input type="submit" value="Buscar">
+        <form action="/search-products" method="GET">
+            <input type="text" name="search" id="search" placeholder="Buscar productos...">
+            <input type="submit" value="Buscar">
+        </form>
     </div>
 
 <%- include('./partials/footer.ejs') %>
