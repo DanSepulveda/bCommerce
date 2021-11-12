@@ -18,6 +18,10 @@
   min-height: 2.7rem;
 }
 
+.finalPrice {
+  font-size: 20px;
+}
+
 .discount {
   color: red;
   text-decoration: line-through;

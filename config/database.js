@@ -1,18 +1,22 @@
 const mysql = require('mysql')
+const { promisify } = require('util')
 
-const db = mysql.createConnection({
+const pool = mysql.createPool({
     host: process.env.HOST,
     user: process.env.SECRET,
     password: process.env.SECRET,
     database: process.env.SECRET
 })
 
-db.connect(err => {
+pool.getConnection((err, connection) => {
     if (err) {
         console.log(err)
         return
     }
+    if (connection) connection.release()
     console.log("Database connected")
 })
 
-module.exports = db
+pool.query = promisify(pool.query)
+
+module.exports = pool

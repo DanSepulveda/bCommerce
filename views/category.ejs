@@ -5,7 +5,7 @@
 <div class="container-fluid d-flex justify-content-center flex-wrap">
     <%products.forEach(product=>{%>
         <div class="card col-xxl-4 m-4" style="width: 18rem;">
-            <div style="background-image: url('<%= product.url_image%>');" class="productImage">
+            <div style="background-image: url('<%= product.url_image ? product.url_image : `/assets/no-image.jpg`%>');" class="productImage">
                 <%if(product.discount>0){%>
                     <span class="badge bg-danger discCircle"><%=product.discount%>%</span>
                     <%}%>
@@ -14,11 +14,11 @@
               <h5 class="card-title text-center productName"><%= product.name%></h5>
               <hr />
               <div class="d-flex justify-content-between">
-                <p class="card-text <%=product.discount>0 && 'discount'%>"><%= product.price%></p>
-
-                <%if(product.discount>0){%>
-                    <p class="card-text"><%= product.finalPrice%></p>
-                <%}%>
+                  
+                  <%if(product.discount>0){%>
+                    <p class="card-text <%=product.discount>0 && 'discount'%>"><%= product.price%></p>
+                    <%}%>
+                    <p class="card-text finalPrice"><%= product.finalPrice%></p>
 
                 <a href="#" class="btn btn-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
