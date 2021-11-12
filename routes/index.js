@@ -12,4 +12,9 @@ router.route('/category/:id')
 router.route('/search-products')
     .get(productControllers.searchProducts)
 
+router.route('/error')
+    .get((req, res) => {
+        res.render('error')
+    })
+
 module.exports = router

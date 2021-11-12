@@ -1,10 +1,22 @@
 body {
   width: 100%;
+  min-height: 100vh;
   background-color: #eee !important;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 !important;
 }
 
 nav {
-  background-color: #444 !important;
+  background-color: #333 !important;
+}
+
+nav i {
+  font-size: 35px;
+  color: whitesmoke;
 }
 
 nav li > a {
@@ -20,12 +32,32 @@ nav li > a:hover {
 }
 
 .activeLink {
-  border: 2px solid whitesmoke;
+  border: 2px solid #ff6a00;
   border-radius: 5px;
 }
 
 .logo {
   width: 50px;
+}
+
+.searcherSection {
+  background-color: #444;
+}
+
+.searchInput {
+  border-radius: 4px;
+  outline: none;
+  padding: 0.3em 0.8em;
+  width: 40%;
+  background-color: #eee;
+}
+
+.searchButton {
+  background-color: #ff6a00;
+  border: none;
+  color: whitesmoke;
+  border-radius: 7px;
+  padding: 0 1em;
 }
 
 .productImage {
@@ -54,6 +86,15 @@ nav li > a:hover {
   font-size: 20px;
 }
 
+.messageContainer img {
+  width: 200px;
+}
+
+.messageContainer h2,
+.messageContainer h3 {
+  color: #444;
+}
+
 footer {
   box-shadow: 1px 1px 5px #444;
   background-color: #444;
@@ -70,7 +111,8 @@ footer span {
   margin-right: 1em;
 }
 
-.iconSection svg {
+.iconSection i {
   margin: 0 0.5em;
   color: whitesmoke;
+  font-size: 30px;
 }

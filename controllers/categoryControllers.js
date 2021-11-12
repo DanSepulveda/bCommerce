@@ -6,7 +6,7 @@ const categoryControllers = {
             let categories = await pool.query('SELECT * from category')
             return categories
         } catch (error) {
-            res.redirect('/')
+            res.redirect('/error')
         }
     },
 }

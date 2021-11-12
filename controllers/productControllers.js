@@ -9,7 +9,9 @@ const formatter = new Intl.NumberFormat('es-CL', {
 const productControllers = {
     showHome: async (req, res) => {
         try {
+            // this function gets all catefories to show links in navbar
             let categories = await getCategories()
+
             res.render('index', {
                 title: 'beCommerce - Inicio',
                 products: [],
@@ -18,22 +20,22 @@ const productControllers = {
                 searching: false
             })
         } catch (error) {
-            res.redirect('/escritorio')
+            res.redirect('/error')
         }
-
     },
     productsPerCategory: async (req, res) => {
         try {
+            // this function gets all catefories to show links in navbar
+            let categories = await getCategories()
+
             let products = await pool.query(`SELECT * FROM product WHERE category = ${req.params.id}`)
             products.map(product => {
                 product.finalPrice = formatter.format(product.price * (100 - product.discount) / 100),
                     product.price = formatter.format(product.price)
             })
+
             let category = await pool.query(`SELECT name FROM category WHERE id = ${req.params.id}`)
             category = category[0].name
-
-            // this function gets all catefories to show links in navbar
-            let categories = await getCategories()
 
             res.render('category', {
                 title: `bCommerce - ${category[0].toUpperCase() + category.slice(1)}`,
@@ -43,22 +45,30 @@ const productControllers = {
                 searching: false
             })
         } catch (error) {
-            res.redirect('/')
+            res.redirect('/error')
         }
     },
     searchProducts: async (req, res) => {
         try {
-            let searchedProducts = await pool.query(`SELECT * FROM product WHERE name LIKE '%${req.query.search}%'`)
+            // this function gets all catefories to show links in navbar
             let categories = await getCategories()
+
+            let searchedProducts = await pool.query(`SELECT * FROM product WHERE name LIKE '%${req.query.search}%'`)
+            searchedProducts.map(product => {
+                product.finalPrice = formatter.format(product.price * (100 - product.discount) / 100),
+                    product.price = formatter.format(product.price)
+            })
+
             res.render('category', {
                 title: `bCommerce - resultados para ${req.body.search}`,
                 products: searchedProducts,
                 category: '',
                 categories,
-                searching: true
+                searching: true,
+                searched: req.query.search
             })
         } catch (error) {
-            console.log(error)
+            res.redirect('/error')
         }
     }
 }

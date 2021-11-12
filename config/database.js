@@ -3,9 +3,9 @@ const { promisify } = require('util')
 
 const pool = mysql.createPool({
     host: process.env.HOST,
-    user: process.env.SECRET,
-    password: process.env.SECRET,
-    database: process.env.SECRET
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 })
 
 pool.getConnection((err, connection) => {
