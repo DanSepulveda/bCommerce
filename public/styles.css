@@ -1,5 +1,27 @@
-.body {
+body {
   width: 100%;
+  background-color: #eee !important;
+}
+
+nav {
+  background-color: #444 !important;
+}
+
+nav li > a {
+  color: whitesmoke !important;
+  font-size: 17px;
+  border: 2px solid transparent;
+  transition: all 300ms !important;
+}
+
+nav li > a:hover {
+  text-decoration: underline;
+  color: #ff6a00 !important;
+}
+
+.activeLink {
+  border: 2px solid whitesmoke;
+  border-radius: 5px;
 }
 
 .logo {
@@ -30,4 +52,25 @@
 .discCircle {
   padding: 0.5em;
   font-size: 20px;
+}
+
+footer {
+  box-shadow: 1px 1px 5px #444;
+  background-color: #444;
+}
+
+footer span {
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.logoFooter {
+  width: 30px;
+  margin-right: 1em;
+}
+
+.iconSection svg {
+  margin: 0 0.5em;
+  color: whitesmoke;
 }

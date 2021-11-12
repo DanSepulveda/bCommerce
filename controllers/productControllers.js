@@ -13,7 +13,8 @@ const productControllers = {
             res.render('index', {
                 title: 'beCommerce - Inicio',
                 categories,
-                products: []
+                products: [],
+                category: ''
             })
         } catch (error) {
             res.redirect('/escritorio')
@@ -35,6 +36,7 @@ const productControllers = {
             let category = await pool.query(`SELECT name from category WHERE id = ${req.params.id}`)
             category = category[0].name
 
+            // this function gets all catefories to show links in navbar
             let categories = await getCategories()
 
             res.render('category', {
