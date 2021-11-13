@@ -1,4 +1,21 @@
 <%- include('./partials/header.ejs') %>
-<main></main>
+<main>
+    <div class="container-fluid d-flex justify-content-center flex-wrap">
+        <%selectedCategories.forEach(category=>{%>
+            <div>
+                <h2>Ofertas en <%= category%></h2>
+                <div class="container-fluid d-flex justify-content-center flex-wrap">
+                    <%products.forEach(product=>{%>
+                        <%if(product.category===category){%>
+                            <%-include('./partials/productCard.ejs', {product})%>
+                        <%}%>
+                    <%})%>
+                </div>
+            </div>
+
+            
+        <%})%>
+    </div>
+</main>
 
 <%- include('./partials/footer.ejs') %>

@@ -12,12 +12,24 @@ const productControllers = {
             // this function gets all catefories to show links in navbar
             let categories = await getCategories()
 
+            let products = await pool.query('SELECT * FROM product WHERE discount > 0')
+
+            let selectedCategories = []
+            products.forEach(product => {
+                if (!selectedCategories.includes(product.category)) {
+                    selectedCategories.push(product.category)
+                }
+            })
+
+            console.log(selectedCategories)
+
             res.render('index', {
                 title: 'beCommerce - Inicio',
-                products: [],
+                products,
                 category: '',
                 categories,
-                searching: false
+                searching: false,
+                selectedCategories
             })
         } catch (error) {
             res.redirect('/error')
@@ -33,7 +45,6 @@ const productControllers = {
                 product.finalPrice = formatter.format(product.price * (100 - product.discount) / 100),
                     product.price = formatter.format(product.price)
             })
-            console.log(products)
 
             let category = await pool.query(`SELECT name FROM category WHERE id = ${req.params.id}`)
             category = category[0].name
