@@ -6,6 +6,14 @@ const formatter = new Intl.NumberFormat('es-CL', {
     currency: 'CLP',
 });
 
+const formatPrices = (products) => {
+    products.map(product => {
+        product.finalPrice = formatter.format(product.price * (100 - product.discount) / 100),
+            product.price = formatter.format(product.price)
+    })
+    return products
+}
+
 const productControllers = {
     showHome: async (req, res) => {
         try {
@@ -13,6 +21,7 @@ const productControllers = {
             let categories = await getCategories()
 
             let products = await pool.query('SELECT * FROM product WHERE discount > 0')
+            products = formatPrices(products)
 
             let selectedCategories = []
             products.forEach(product => {
@@ -20,8 +29,6 @@ const productControllers = {
                     selectedCategories.push(product.category)
                 }
             })
-
-            console.log(selectedCategories)
 
             res.render('index', {
                 title: 'beCommerce - Inicio',
@@ -41,10 +48,7 @@ const productControllers = {
             let categories = await getCategories()
 
             let products = await pool.query(`SELECT * FROM product WHERE category = ${req.params.id}`)
-            products.map(product => {
-                product.finalPrice = formatter.format(product.price * (100 - product.discount) / 100),
-                    product.price = formatter.format(product.price)
-            })
+            products = formatPrices(products)
 
             let category = await pool.query(`SELECT name FROM category WHERE id = ${req.params.id}`)
             category = category[0].name
@@ -65,11 +69,10 @@ const productControllers = {
             // this function gets all catefories to show links in navbar
             let categories = await getCategories()
 
-            let searchedProducts = await pool.query(`SELECT * FROM product WHERE name LIKE '%${req.query.search}%'`)
-            searchedProducts.map(product => {
-                product.finalPrice = formatter.format(product.price * (100 - product.discount) / 100),
-                    product.price = formatter.format(product.price)
-            })
+            let searchedProducts = await pool.query(
+                `SELECT product.id, product.name, product.url_image, product.price, product.discount, category.name AS category FROM product INNER JOIN category ON product.category=category.id WHERE product.name LIKE '%${req.query.search}%'`)
+
+            searchedProducts = formatPrices(searchedProducts)
 
             res.render('category', {
                 title: `bCommerce - Resultados para ${req.query.search}`,
