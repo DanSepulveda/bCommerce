@@ -17,4 +17,14 @@ router.route('/error')
         res.render('error')
     })
 
+router.route('/not-found')
+    .get((req, res) => {
+        res.render('not-found')
+    })
+
+router.route('/:anything')
+    .get((req, res) => {
+        res.redirect('/not-found')
+    })
+
 module.exports = router

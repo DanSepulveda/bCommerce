@@ -40,8 +40,8 @@ const productControllers = {
         try {
             // this function gets all catefories to show links in navbar
             let categories = await getCategories()
-
             let products = await pool.query(`SELECT * FROM product WHERE category = ${req.params.id}`)
+            if (!products.length) return res.redirect('/not-found')
             products = addFinalPrice(products)
 
             let category = await pool.query(`SELECT name FROM category WHERE id = ${req.params.id}`)
