@@ -33,6 +33,7 @@ const productControllers = {
                 product.finalPrice = formatter.format(product.price * (100 - product.discount) / 100),
                     product.price = formatter.format(product.price)
             })
+            console.log(products)
 
             let category = await pool.query(`SELECT name FROM category WHERE id = ${req.params.id}`)
             category = category[0].name
@@ -60,7 +61,7 @@ const productControllers = {
             })
 
             res.render('category', {
-                title: `bCommerce - resultados para ${req.body.search}`,
+                title: `bCommerce - Resultados para ${req.query.search}`,
                 products: searchedProducts,
                 category: '',
                 categories,

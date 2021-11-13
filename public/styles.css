@@ -40,6 +40,63 @@ nav li > a:hover {
   width: 50px;
 }
 
+.cartIcon,
+#close {
+  cursor: pointer;
+  transition: all 300ms;
+}
+
+#close {
+  color: #444;
+  margin-bottom: 0.5em;
+}
+
+.cartIcon:hover,
+#close:hover {
+  color: #ff6a00;
+}
+
+.cartList {
+  width: 30vw;
+  height: 100vh;
+  background-color: #eee;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 5;
+  box-shadow: -1px -1px 5px #444;
+}
+
+#productList {
+  width: 100%;
+  height: 70%;
+  overflow-y: scroll;
+}
+
+.singleProduct {
+  width: 80%;
+  border-bottom: 1px solid #444;
+  margin-top: 0.5em;
+}
+
+.cartImage {
+  width: 5vw;
+  height: 7vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 1em 0.3em 0.5em;
+}
+
+.info {
+  flex: 1;
+}
+
+.hide {
+  display: none !important;
+}
+
+/* SEARCH INPUT */
 .searcherSection {
   background-color: #444;
 }
@@ -60,6 +117,7 @@ nav li > a:hover {
   padding: 0 1em;
 }
 
+/* PRODUCT CARD */
 .productImage {
   width: 100%;
   height: 250px;
@@ -86,6 +144,17 @@ nav li > a:hover {
   font-size: 20px;
 }
 
+.buyButton {
+  background-color: #bd5307;
+  color: whitesmoke;
+}
+
+.buyButton:hover {
+  background-color: #963e00;
+  color: whitesmoke;
+}
+
+/* SEARCH NOT FOUND */
 .messageContainer img {
   width: 200px;
 }
@@ -95,6 +164,16 @@ nav li > a:hover {
   color: #444;
 }
 
+.messageContainer a {
+  text-decoration: none;
+  transition: all 300ms;
+}
+
+.messageContainer a:hover {
+  color: #444;
+}
+
+/* FOOTER */
 footer {
   box-shadow: 1px 1px 5px #444;
   background-color: #444;
@@ -115,4 +194,5 @@ footer span {
   margin: 0 0.5em;
   color: whitesmoke;
   font-size: 30px;
+  cursor: pointer;
 }

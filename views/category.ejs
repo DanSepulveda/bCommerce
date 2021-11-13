@@ -1,27 +1,28 @@
 <%- include('./partials/header.ejs') %>
 <main>
-<div class="container-fluid">
-    <h2 class="text-center my-5">
-        <%if(searching && products.length){%>
-            Resultados para "<%= searched%>": (<%= products.length%>)
-        <%}else if(!searching){%>
-            Productos de la categoría <%= category.toUpperCase()%> (<%= products.length%>)
-        <%}%>
-    </h2>
-</div>
-<div class="container-fluid d-flex justify-content-center flex-wrap">
-    <%if(products.length){%>
-        <%products.forEach(product=>{%>
-            <%-include('./partials/productCard.ejs', {product})%>
-    <%})}else{%>
-        <div class="d-flex flex-column justify-content-center align-items-center messageContainer">
-            <img src="/assets/not-found.png" alt="Not found image">
-            <h2 class="text-center">Lo sentimos</h2>
-            <h3 class="text-center">No hay productos que coincidan con "<%= searched%>"</h3>
-            <h3 class="text-center">Intente con otro término</h3>
-            <button class="searchButton py-2 mt-3"><i class="fas fa-home"></i> Ir a Inicio</button>
-        </div>
-        <%}%>
-</div>
+    <div class="container-fluid">
+        <h2 class="text-center my-5" onclick="addToCart('hola')">
+            <%if(searching && products.length){%>
+                Resultados para "<%= searched%>": (<%= products.length%>)
+            <%}else if(!searching){%>
+                Productos de la categoría <%= category.toUpperCase()%> (<%= products.length%>)
+            <%}%>
+        </h2>
+    </div>
+
+    <div class="container-fluid d-flex justify-content-center flex-wrap">
+        <%if(products.length){%>
+            <%products.forEach(product=>{%>
+                <%-include('./partials/productCard.ejs', {product})%>
+        <%})}else{%>
+            <div class="d-flex flex-column justify-content-center align-items-center messageContainer">
+                <img src="/assets/not-found.png" alt="Not found image">
+                <h2 class="text-center">Lo sentimos</h2>
+                <h3 class="text-center">No hay productos que coincidan con "<%= searched%>"</h3>
+                <h3 class="text-center">Intente con otro término</h3>
+                <a href="/" class="searchButton py-2 mt-3"><i class="fas fa-home"></i> Ir a Inicio</a>
+            </div>
+            <%}%>
+    </div>
 </main>
 <%- include('./partials/footer.ejs') %>
