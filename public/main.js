@@ -46,3 +46,13 @@ document.getElementById('clearButton').addEventListener('click', function (e) {
     productList.innerHTML = ''
     cartQty.innerText = 0
 })
+
+const formatter = new Intl.NumberFormat('es-CL', {
+    style: 'currency',
+    currency: 'CLP',
+});
+
+let prices = Array.from(document.getElementsByClassName('price'))
+prices.forEach(price => {
+    price.innerText = formatter.format(price.innerText)
+})

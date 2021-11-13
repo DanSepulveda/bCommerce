@@ -1,15 +1,9 @@
 const pool = require('../config/database')
 const getCategories = require('./categoryControllers').getCategories
 
-const formatter = new Intl.NumberFormat('es-CL', {
-    style: 'currency',
-    currency: 'CLP',
-});
-
-const formatPrices = (products) => {
+const addFinalPrice = (products) => {
     products.map(product => {
-        product.finalPrice = formatter.format(product.price * (100 - product.discount) / 100),
-            product.price = formatter.format(product.price)
+        product.finalPrice = product.price * (100 - product.discount) / 100
     })
     return products
 }
@@ -21,7 +15,7 @@ const productControllers = {
             let categories = await getCategories()
 
             let products = await pool.query('SELECT * FROM product WHERE discount > 0')
-            products = formatPrices(products)
+            products = addFinalPrice(products)
 
             let selectedCategories = []
             products.forEach(product => {
@@ -48,7 +42,7 @@ const productControllers = {
             let categories = await getCategories()
 
             let products = await pool.query(`SELECT * FROM product WHERE category = ${req.params.id}`)
-            products = formatPrices(products)
+            products = addFinalPrice(products)
 
             let category = await pool.query(`SELECT name FROM category WHERE id = ${req.params.id}`)
             category = category[0].name
@@ -72,7 +66,7 @@ const productControllers = {
             let searchedProducts = await pool.query(
                 `SELECT product.id, product.name, product.url_image, product.price, product.discount, category.name AS category FROM product INNER JOIN category ON product.category=category.id WHERE product.name LIKE '%${req.query.search}%'`)
 
-            searchedProducts = formatPrices(searchedProducts)
+            searchedProducts = addFinalPrice(searchedProducts)
 
             res.render('category', {
                 title: `bCommerce - Resultados para ${req.query.search}`,

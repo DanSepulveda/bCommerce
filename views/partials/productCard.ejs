@@ -13,11 +13,11 @@
          <hr />
         <div class="d-flex justify-content-between">
             <%if(product.discount>0){%>
-                <p class="card-text <%=product.discount>0 && 'discount'%>"><%= product.price%></p>
+                <p class="card-text <%=product.discount>0 && 'discount'%> price"><%= product.price%></p>
             <%}else{%>
                <p>-</p>
             <%}%>
-            <p class="card-text finalPrice"><%= product.finalPrice%></p>
+            <p class="card-text finalPrice price"><%= product.finalPrice%></p>
         </div>
         <button 
         class="btn mx-auto buyButton" 
