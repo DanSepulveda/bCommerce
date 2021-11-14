@@ -14,12 +14,18 @@ router.route('/search-products')
 
 router.route('/error')
     .get((req, res) => {
-        res.render('error')
+        res.render('error', {
+            title: 'bCommerce - Problemas técnicos',
+            categories: []
+        })
     })
 
 router.route('/not-found')
     .get((req, res) => {
-        res.render('not-found')
+        res.render('not-found', {
+            title: 'bCommerce - Págino no existe',
+            categories: []
+        })
     })
 
 router.route('/checkout')

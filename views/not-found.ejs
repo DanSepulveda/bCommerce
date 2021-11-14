@@ -1,1 +1,9 @@
-<h1>no existe</h1>
+<%- include('./partials/header.ejs') %>
+    <main>
+        <div class="error">
+            <img src="/assets/error.png" alt="Error 404">
+            <h1>La página que buscas no existe.</h1>
+            <a href="/" class="searchButton py-2 mt-3"><i class="fas fa-home"></i> Ir a Inicio</a>
+        </div>
+        </main>
+<%- include('./partials/footer.ejs') %>
