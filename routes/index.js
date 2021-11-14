@@ -22,6 +22,9 @@ router.route('/not-found')
         res.render('not-found')
     })
 
+router.route('/checkout')
+    .get(productControllers.checkout)
+
 router.route('/:anything')
     .get((req, res) => {
         res.redirect('/not-found')

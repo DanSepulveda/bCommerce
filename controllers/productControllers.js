@@ -79,6 +79,14 @@ const productControllers = {
         } catch (error) {
             res.redirect('/error')
         }
+    },
+    checkout: async (req, res) => {
+        let categories = await getCategories()
+        res.render('checkout', {
+            title: 'beCommerce - Gracias por su compra',
+            category: '',
+            categories
+        })
     }
 }
 

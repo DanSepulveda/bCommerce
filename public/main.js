@@ -3,9 +3,10 @@ const formatter = new Intl.NumberFormat('es-CL', {
     currency: 'CLP',
 });
 
-const cartSection = document.getElementById('cartSection')
 const productList = document.getElementById('productList')
 const cartQty = document.getElementById('cartQty')
+const message = document.getElementById('message')
+const messageBox = document.getElementById('messageBox')
 
 // FORMAT FOR PRODUCT PRICES
 const formatPrices = (className) => {
@@ -34,10 +35,24 @@ const getProductsFromLS = () => {
     formatPrices('cartPrice')
 }
 
-getProductsFromLS()
-formatPrices('price')
+const clearAll = () => {
+    localStorage.clear()
+    productList.innerHTML = ''
+    cartQty.innerText = 0
+}
+
+const showMessage = (messageText) => {
+    message.classList.add('hide')
+    message.classList.remove('hide')
+    messageBox.innerText = messageText
+    setTimeout(() => {
+        message.classList.add('hide')
+    }, 3000);
+}
 
 // LISTENERS FOR OPEN AND CLOSE CART
+const cartSection = document.getElementById('cartSection')
+
 document.getElementById('cart').addEventListener('click', function (e) {
     cartSection.classList.remove('hide')
 })
@@ -51,16 +66,31 @@ let buttons = Array.from(document.getElementsByClassName('buyButton'))
 buttons.forEach(button => button.addEventListener('click', function (e) {
     const { id, name, image, price } = e.target.dataset
     let product = { name, image, price }
+    showMessage('Producto agregado correctamente')
     localStorage.setItem(id, JSON.stringify(product))
     getProductsFromLS()
     formatPrices()
 }))
 
+
 // CLEAR PRODUCTS FROM LS AND CART
 document.getElementById('clearButton').addEventListener('click', function (e) {
-    localStorage.clear()
-    productList.innerHTML = ''
-    cartQty.innerText = 0
+    clearAll()
 })
+
+// FINISHING BUYING PROCESS
+
+document.getElementById('finishButton').addEventListener('click', function (e) {
+    if (!Object.keys(localStorage).length) {
+        showMessage('Primero debe agregar productos al carro')
+    } else {
+        window.location.replace('/checkout')
+        clearAll()
+    }
+})
+
+getProductsFromLS()
+formatPrices('price')
+
 
 
