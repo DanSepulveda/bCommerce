@@ -14,7 +14,7 @@ const productControllers = {
             // this function gets all catefories to show links in navbar
             let categories = await getCategories()
 
-            let products = await pool.query('SELECT * FROM product WHERE discount > 0')
+            let products = await pool.query('SELECT product.id, product.name, product.url_image, product.price, product.discount, category.name AS category FROM product INNER JOIN category ON product.category=category.id')
             products = addFinalPrice(products)
 
             let selectedCategories = []
