@@ -1,10 +1,10 @@
 # Tienda Online - bCommerce
 
-bCommerce es una tienda online que comercializa principalmente bebidas alcohólicas. Obtiene los datos de los productos a través de una base de datos de AWS, utilizando para ello una API generada con Node.js
+bCommerce es una tienda online que comercializa principalmente bebidas alcohólicas. Obtiene los datos de los productos a través de una base de datos de AWS, utilizando para ello una API generada con Node.js junto con SQL. Los productos se presentan agrupados en categorías de manera dinámica y cuenta con un buscador a nivel backend.
 
 ## Comenzando 🚀
 
-### Content
+### Contenido
 
 Este projecto tiene 2 ramas: master y deployment. Mientras que **master** está configurada para ejecutar el proyecto de manera local, **deployment** está preparada para hostear el proyecto.
 
