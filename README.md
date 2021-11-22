@@ -1,37 +1,38 @@
-# Tienda Online - bCommerce
+# bCommerce Store
 
-bCommerce es una tienda online que comercializa principalmente bebidas alcohólicas. Obtiene los datos de los productos a través de una base de datos de AWS, utilizando para ello una API generada con Node.js junto con SQL. Los productos se presentan agrupados en categorías de manera dinámica y cuenta con un buscador a nivel backend.
+bCommerce is an online store that mainly sells alcoholic beverages. It gets product data through an AWS database, using an API built with Node.js and SQL. The products are presented dynamically grouped into categories and it has a search engine at a backend level.
 
-## Comenzando 🚀
+## 🚀 Getting Started
 
-### Contenido
+### Content
 
-Este projecto tiene 2 ramas: master y deployment. Mientras que **master** está configurada para ejecutar el proyecto de manera local, **deployment** está preparada para hostear el proyecto.
+This project has two branches: master and deployment. **master** is configured to be run in local while **deployment** is prepared to be hosted on Heroku.
 
 ### Demo
 
-Puedes ver la demo de este proyecto en el siguiente enlace: [bCommerce](https://bcommerce-dansep.herokuapp.com/)
+You can see a demo of this project on the following link: [bCommerce](https://bcommerce-dansep.herokuapp.com/)
 
-### Instalación 🔧
+### 🔧 Installation
 
-Si quieres ejecutar este proyecto de manera local, debes clonar la rama **master** y ejecutar los siguientes pasos (todos deben ejecutarse en el directorio raíz):
+If you want to run this project on your machine, just follow these steps:
 
-- Crear archivo `.env` y agregar las variables `HOSTDB`, `USER`, `PASSWORD` y `DATABASE`
-- Ejecutar `npm install`
-- Ejecutar `npm start`
-- Abrir proyecto en el navegador a través de `http://localhost:4000`
+- Create a folder and execute `git clone https://github.com/DanSepulveda/mytinerary-sepulveda.git`
+- Create a `.env` file and add `HOSTDB`, `USER`, `PASSWORD` and `DATABASE` variables.
+- Ejecutar `npm install` in root directory.
+- Ejecutar `npm start` in root directory.
+- Go to `http://localhost:4000` on web browser.
 
-## Tecnologías utilizadas 🛠️
+## 🛠️ Technology Stack
 
-Este proyecto fue desarrollado utilizando:
+This project was built using the following technologies:
 
 - HTML
 - CSS Vanilla
-- [Bootstrap](https://getbootstrap.com/) - Librería para HTML, CSS y JS
-- [EJS](https://ejs.co/) - Motor de plantillas
-- [Node.js](https://nodejs.org/en/) - Entorno de ejecucío para JavaScript
-- [Express](https://expressjs.com/) - Framework para Node.js
+- [Bootstrap](https://getbootstrap.com/) - Frontend Framework
+- [EJS](https://ejs.co/) - Embedded JavaScript templating
+- [Node.js](https://nodejs.org/en/) - avaScript runtime
+- [Express](https://expressjs.com/) - Node.js Framework
 
 ---
 
-Desarrollado por [Daniel Sepúlveda](https://github.com/DanSepulveda/) 😊
+Desarrollado por [Daniel Sepúlveda](https://github.com/DanSepulveda/)
